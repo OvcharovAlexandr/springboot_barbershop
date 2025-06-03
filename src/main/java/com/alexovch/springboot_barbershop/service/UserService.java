@@ -9,4 +9,5 @@ public interface UserService {
     public void saveUser(UserBarbershop user);
     public UserBarbershop getUser(int id);
     public void deleteUser(int id);
+    public UserBarbershop findUserByName(String name);
 }

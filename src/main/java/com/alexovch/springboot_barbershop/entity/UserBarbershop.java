@@ -9,6 +9,10 @@ public class UserBarbershop {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+    @Column(name = "user_name", unique = true)
+    private String userName;
+    @Column(name = "password")
+    private String password;
     @Column(name = "name")
     private String name;
     @Column(name = "phone_number")
@@ -22,7 +26,9 @@ public class UserBarbershop {
     public UserBarbershop() {
     }
 
-    public UserBarbershop(String name, String phoneNumber, String email, Role role) {
+    public UserBarbershop(String userName, String password, String name, String phoneNumber, String email, Role role) {
+        this.userName = userName;
+        this.password = password;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -38,6 +44,22 @@ public class UserBarbershop {
                 ", email='" + email + '\'' +
                 ", role=" + role +
                 '}';
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {
