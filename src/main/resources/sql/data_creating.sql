@@ -9,11 +9,10 @@ USE
 CREATE TABLE barbershop.users
 (
     id           int NOT NULL AUTO_INCREMENT,
-    user_name    varchar(200) UNIQUE,
+    email        varchar(150) UNIQUE,
     password     varchar(200),
     name         varchar(200),
     phone_number varchar(25),
-    email        varchar(150),
     role         varchar(50),
     PRIMARY KEY (id)
 );
