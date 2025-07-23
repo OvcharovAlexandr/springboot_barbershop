@@ -1,5 +1,8 @@
 package com.alexovch.springboot_barbershop.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +14,7 @@ public class ServicePhoto {
     private int id;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "service_id")
+    @JsonIdentityReference(alwaysAsId = true)
     private ServiceBarbershop service;
     @Column(name = "img_url")
     private String imgURL;

@@ -1,12 +1,24 @@
 package com.alexovch.springboot_barbershop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "services")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 public class ServiceBarbershop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +32,6 @@ public class ServiceBarbershop {
     private Double price;
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "service", fetch = FetchType.LAZY)
     private List<ServicePhoto> photos;
-
-    public ServiceBarbershop() {
-    }
 
     public ServiceBarbershop(String name, String description, Double price) {
         this.name = name;
@@ -48,31 +57,4 @@ public class ServiceBarbershop {
         photo.setService(this);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 }

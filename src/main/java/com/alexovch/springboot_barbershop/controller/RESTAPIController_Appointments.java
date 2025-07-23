@@ -7,25 +7,19 @@ import com.alexovch.springboot_barbershop.entity.UserBarbershop;
 import com.alexovch.springboot_barbershop.service.AppointmentService;
 import com.alexovch.springboot_barbershop.service.ServiceService;
 import com.alexovch.springboot_barbershop.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/appointments")
+@RequiredArgsConstructor
 public class RESTAPIController_Appointments {
 
     private final AppointmentService appointmentService;
     private final ServiceService serviceService;
     private final UserService userService;
-
-    @Autowired
-    public RESTAPIController_Appointments(AppointmentService appointmentService, ServiceService serviceService, UserService userService) {
-        this.appointmentService = appointmentService;
-        this.serviceService = serviceService;
-        this.userService = userService;
-    }
 
     @GetMapping("")
     public List<Appointment> getAppointments() {
